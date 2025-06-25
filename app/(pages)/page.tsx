@@ -10,9 +10,9 @@ import {
 } from "@/components/ui/pagination";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 
-interface Product {
+interface Product { 
   id: number;
   title: string;
   price: number;
@@ -21,7 +21,7 @@ interface Product {
   category: string;
 }
 
-export default function Page() {
+function ProductList() {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -134,5 +134,13 @@ export default function Page() {
         </Pagination>
       )}
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ProductList />
+    </Suspense>
   );
 }
