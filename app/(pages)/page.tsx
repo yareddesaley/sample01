@@ -111,7 +111,6 @@ function ProductList() {
     setEditDialogOpen(true);
   };
 
-  // Calculate pagination
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -123,7 +122,6 @@ function ProductList() {
 
   return (
     <div className="space-y-6">
-      {/* Product Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-2 w-full">
         {currentProducts.map((product) => (
           <Card key={product.id} className="h-full w-full hover:shadow-lg transition-shadow">
@@ -172,7 +170,6 @@ function ProductList() {
         ))}
       </div>
 
-      {/* Delete Confirmation Dialog */}
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
         <AlertDialogContent className="bg-black text-white">
           <AlertDialogHeader>
@@ -188,7 +185,6 @@ function ProductList() {
         </AlertDialogContent>
       </AlertDialog>
 
-      {/* Edit Dialog */}
       <AlertDialog open={editDialogOpen} onOpenChange={(open) => {
         setEditDialogOpen(open);
         if (!open) reset();
@@ -263,7 +259,6 @@ function ProductList() {
         </AlertDialogContent>
       </AlertDialog>
 
-      {/* Pagination */}
       {totalPages > 1 && (
         <Pagination className="my-6">
           <PaginationContent>
