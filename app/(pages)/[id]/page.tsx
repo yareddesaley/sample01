@@ -15,7 +15,7 @@ export default function Page() {
 
     const {id}=useParams();
     useEffect(()=>{
-        axios.get(`https://fakestoreapi.com/products/${id}`)
+        axios.get(`http://localhost:3001/products/${id}`)
         .then((response) => {
             setProduct(response.data);
            
